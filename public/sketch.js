@@ -29,9 +29,10 @@ function draw() {
       let xpos = x * 100;
       let ypos = y * 100;
       let index = y * width + x; // find the index
-
-      if (selected.find((item) => item === index)) {
-        fill(color);
+      
+      const pixel = selected.find((item) => item.index === index);
+      if (pixel) {
+        fill(pixel.color);
       } else {
         fill(255);
       }
@@ -52,13 +53,12 @@ function mouseClicked() {
   const x = parseInt(mouseX / 100);
   const y = parseInt(mouseY / 100);
 
-  console.log(x, y);
   if (x < height && y < width) {
     const index = (y * width + x);
     if (selected.find(item => item === index)) {
       socket.emit('deselect', index);
     } else {
-      socket.emit('select', index);
+      socket.emit('select', {index: index, color: color});
     }
   }
 }

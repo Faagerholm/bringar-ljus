@@ -14,12 +14,13 @@ server.listen(3000, () => {
 io.on('connection', (socket) => {
 
   socket.on('select', (selection) => {
+    console.log(selected);
     selected = [...selected, selection];
     io.emit('update', selected);
   });
 
   socket.on('deselect', (selection) => {
-    selected = selected.filter(item => item != selection);
+    selected = selected.filter(item => item.index != selection);
     io.emit('update', selected);
   })
 });
