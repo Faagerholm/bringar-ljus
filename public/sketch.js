@@ -1,8 +1,8 @@
 let selected = [0,];
 const cellWidth = 10;
 const cellHeight = 10;
-const width = 1000;
-const height = 700;
+const canWidth = 1400/cellWidth;
+const canHeight = 700/cellHeight;
 let socket;
 let color;
 
@@ -17,7 +17,7 @@ const initRandomColor = () => {
 
 
 function setup() {
-  createCanvas(width,height);
+  createCanvas(1400,700);
   socket = io();
   socket.on('update', items => {
     selected = items;
@@ -29,14 +29,15 @@ function setup() {
 }
 
 function draw() {
+  console.log("Draw!")
   background(220);
   textAlign(CENTER, CENTER);
 
-  for (let y = 0; y <= height; y++) {
-    for (let x = 0; x <= width; x++) {
+  for (let y = 0; y <= canHeight; y++) {
+    for (let x = 0; x <= canWidth; x++) {
       let xpos = x * cellWidth;
       let ypos = y * cellHeight;
-      let index = x * width + y; // find the index
+      let index = x * canWidth + y; // find the index
       const pixel = selected.find((item) => item.index === index);
       if (pixel) {
         fill(pixel.color);
@@ -51,13 +52,13 @@ function draw() {
       noStroke();
     }
   }
+  console.log("Done!")
 }
 
 function mouseClicked() {
-  const x = parseInt(mouseY / cellWidth);
-  const y = parseInt(mouseX / cellHeight);
-  console.log(x, y);
-  const index = Math.floor(y * width + x);
-  console.log(index);
+  const x = parseInt((mouseY) / cellWidth);
+  const y = parseInt((mouseX) / cellHeight);
+  const index = Math.floor(y * canWidth + x);
   socket.emit('select', {index: index, color: color});
+  console.log("Click!")
 }

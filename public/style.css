@@ -14,25 +14,21 @@ body {
 canvas {
   background: #222;
   color: white;
-  padding: 2rem;
   display: inline;
 }
 
-main {
+.main-container {
   width: 100%;
   text-align:center;
   padding: 1rem;
   position: relative;
   background: linear-gradient(to right, red, purple);
-  padding: 3px;
+  padding: 20px;
 }
 
 .footer-title {
   font-size: 3rem;
   color: yellow;
-}
-.footer-note {
-  
 }
 
 .title {
