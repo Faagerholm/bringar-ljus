@@ -1,8 +1,8 @@
 let selected = [0,];
 const cellWidth = 10;
 const cellHeight = 10;
-const width = Math.floor(window.innerWidth/cellWidth);
-const height = Math.floor(window.innerHeight / cellHeight);
+const width = 1000;
+const height = 700;
 let socket;
 let color;
 
@@ -17,7 +17,7 @@ const initRandomColor = () => {
 
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
+  createCanvas(width,height);
   socket = io();
   socket.on('update', items => {
     selected = items;
