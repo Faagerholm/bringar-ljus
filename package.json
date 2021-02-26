@@ -1,14 +1,20 @@
 {
-  "name": "tfif-hackerino",
+  "name": "bringar-ljus",
   "version": "1.0.0",
-  "description": "",
+  "description": "A piece of software that brings light to your day",
   "main": "index.js",
   "scripts": {
     "start":  "cross-env NODE_ENV=production node index.js",
     "dev" : "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "bring",
+    "light",
+    "to",
+    "your",
+    "day"
+  ],
+  "author": "@Faagerholm & @JaNord",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
