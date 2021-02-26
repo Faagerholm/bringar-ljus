@@ -16,8 +16,13 @@ const initRandomColor = () => {
 function setup() {
   createCanvas(500, 500);
   socket = io();
-  socket.on('update', items => selected = items);
+  socket.on('update', items => {
+    selected = items;
+    draw();
+  });
+
   color = initRandomColor();
+  noLoop();
 }
 
 function draw() {
@@ -55,10 +60,7 @@ function mouseClicked() {
 
   if (x < height && y < width) {
     const index = (y * width + x);
-    if (selected.find(item => item === index)) {
-      socket.emit('deselect', index);
-    } else {
-      socket.emit('select', {index: index, color: color});
-    }
+    
+    socket.emit('select', {index, color});
   }
 }
