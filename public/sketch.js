@@ -1,7 +1,8 @@
 let selected = [0,];
-const width = 100, height = 100;
-const cellWidth = window.innerWidth / width;
-const cellHeight = window.innerHeight / height;
+const cellWidth = 10;
+const cellHeight = 10;
+const width = Math.floor(window.innerWidth/cellWidth);
+const height = Math.floor(window.innerHeight / cellHeight);
 let socket;
 let color;
 
@@ -31,12 +32,11 @@ function draw() {
   background(220);
   textAlign(CENTER, CENTER);
 
-  for (let y = 0; y <= width; y++) {
-    for (let x = 0; x <= height; x++) {
+  for (let y = 0; y <= height; y++) {
+    for (let x = 0; x <= width; x++) {
       let xpos = x * cellWidth;
       let ypos = y * cellHeight;
-      let index = y * width + x; // find the index
-      
+      let index = x * width + y; // find the index
       const pixel = selected.find((item) => item.index === index);
       if (pixel) {
         fill(pixel.color);
@@ -49,18 +49,15 @@ function draw() {
       let h = map(index, 0, 69, 0, 255);
       fill(h);
       noStroke();
-      text(index, xpos, ypos, cellWidth, cellHeight);
-
     }
   }
 }
 
 function mouseClicked() {
-  const x = parseInt(mouseX / cellWidth);
-  const y = parseInt(mouseY / cellHeight);
+  const x = parseInt(mouseY / cellWidth);
+  const y = parseInt(mouseX / cellHeight);
   console.log(x, y);
-  if (x < height && y < width) {
-    const index = (y * width + x);
-    socket.emit('select', {index: index, color: color});
-  }
+  const index = Math.floor(y * width + x);
+  console.log(index);
+  socket.emit('select', {index: index, color: color});
 }
