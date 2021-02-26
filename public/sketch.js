@@ -28,14 +28,12 @@ function setup() {
   });
 
   color = initRandomColor();
-  console.log("Your color: ", color)
+  console.log("Your color: ", color);
+  document.getElementById("colorButton").style.backgroundColor = color;
   noLoop();
 }
 
 function draw() {
-  background(220);
-  textAlign(CENTER, CENTER);
-
   for (let y = 0; y <= canHeight; y++) {
     for (let x = 0; x <= canWidth; x++) {
       let xpos = x * cellWidth;
@@ -69,5 +67,12 @@ function mouseClicked() {
   if (x > -1 && y > -1 && x < canWidth && y < canHeight) {
     const index = calcIndex(x, y);
     socket.emit('select', { index: index, color: color });
+  }
+}
+
+const newColor = () => {
+  const ok = confirm("Are you sure you want a new color?");
+  if(ok) {
+    location.reload();
   }
 }

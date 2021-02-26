@@ -28,9 +28,22 @@ canvas {
 
 .footer-title {
   font-size: 3rem;
-  color: yellow;
+  background: -webkit-linear-gradient(red, yellow, blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.footer-note {
+  border-bottom: 2px solid white;
+  color: gray;
 }
 
 .title {
   text-align: center;
+}
+
+#colorButton {
+  border: None;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
 }
