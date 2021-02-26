@@ -7,7 +7,7 @@ let selected = [];
 
 app.use(express.static('public'));
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 5000, () => {
   console.log('listening on port 3000');
 });
 
