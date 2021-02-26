@@ -44,7 +44,7 @@ function draw() {
         fill(255);
       }
 
-      stroke(0);
+      stroke('rgba(0,0,0,0.2)');
       rect(xpos, ypos, cellWidth, cellHeight);
       let h = map(index, 0, 69, 0, 255);
       fill(h);
