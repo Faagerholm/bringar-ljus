@@ -6,4 +6,4 @@ This is like a digital chalk board, but better, since you are free to write or d
 
 Write nice messages to your friends, leave your creative mark on the internet or simply draw phallic symbols to amuse yourself and no one else.
 
-All this is live [here](www.bringar-ljus.life). Enjoy!
+All this is live [here](https://www.bringar-ljus.life). Enjoy!
