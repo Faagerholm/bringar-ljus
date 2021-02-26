@@ -25,11 +25,11 @@ function setup() {
   });
 
   color = initRandomColor();
+  console.log("Your color: ", color)
   noLoop();
 }
 
 function draw() {
-  console.log("Draw!")
   background(220);
   textAlign(CENTER, CENTER);
 
@@ -52,7 +52,6 @@ function draw() {
       noStroke();
     }
   }
-  console.log("Done!")
 }
 
 function mouseClicked() {
@@ -60,5 +59,4 @@ function mouseClicked() {
   const y = parseInt((mouseX) / cellHeight);
   const index = Math.floor(y * canWidth + x);
   socket.emit('select', {index: index, color: color});
-  console.log("Click!")
 }
